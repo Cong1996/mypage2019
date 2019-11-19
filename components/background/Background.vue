@@ -1,6 +1,6 @@
 <template>
     <!--制作一种日夜交替的背景-->
-    <div id="background" class="background">
+    <div id="background" class="background" :style="{background:backgroundLinearGradient}">
         <div class="backgroundImg"></div>
         <Sun v-if="false"></Sun>
         <Moon v-if="false"></Moon>
@@ -14,6 +14,38 @@
     import StarMgr from "./StarMgr";
     export default {
         name: "Background.vue",
+        data(){
+          return{
+            startColor:"",
+            endColor:"",
+            startColorPercent:0.1
+          }
+        },
+        methods:{
+            updateColor(){
+                let nowHour=this.$store.state.nowDate.getHours(),
+                    dayColorChange=window.dataConfig.dayColorChange,
+                    index=Math.floor(Math.abs(nowHour-12)/3);
+                this.startColor=nowHour>12?dayColorChange[index+1]:dayColorChange[index];
+                this.endColor=nowHour>12?dayColorChange[index]:dayColorChange[index+1];
+                let nowMinutes=(nowHour-12)%3*60+this.$store.state.nowDate.getMinutes();
+                this.startColorPercent=nowMinutes/(3*60);
+                let that=this;
+                setTimeout(function(){
+                    that.$store.commit('updateNowDate');
+                    that.updateColor();
+                },10*600)
+            }
+        },
+        mounted(){
+            this.updateColor();
+
+        },
+        computed:{
+            backgroundLinearGradient(){
+                return `linear-gradient(${this.startColor} ${this.startColorPercent*100}%,${this.endColor} 100%)`;
+            }
+        },
         components:{
             Moon,
             Sun,
@@ -28,7 +60,6 @@
         height: 100vh;
         overflow: hidden;
         position: relative;
-        background: linear-gradient(rgba(48,46,48,1) 0,rgba(52,38,99,1) 100%);
     }
     .backgroundImg{
         position: fixed;

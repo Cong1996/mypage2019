@@ -10,6 +10,9 @@ export default {
   name: 'app',
   components: {
     Background
+  },
+  created(){
+    this.$store.commit("init");
   }
 }
 </script>

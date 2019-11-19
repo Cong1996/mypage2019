@@ -111,11 +111,11 @@
         border-radius: 50%;
         background: #fff;
         transform: translateY(-50%);
-        box-shadow: 0 0 20px gold,
-                    0 0 40px gold,
-                    0 0 60px gold,
-                    0 0 80px gold,
-                    0 0 100px gold,
+        box-shadow: 0 0 20px #fff,
+                    0 0 40px #fff,
+                    0 0 60px #fff,
+                    0 0 80px #fff,
+                    0 0 100px #fff,
                     0 0 0 5px rgba(255, 255, 0, 0.1);
     }
     @keyframes rotateStar {
