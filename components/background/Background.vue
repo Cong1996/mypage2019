@@ -4,14 +4,14 @@
         <div class="backgroundImg"></div>
         <Sun v-if="false"></Sun>
         <Moon v-if="false"></Moon>
-        <StarMgr></StarMgr>
+        <CometMgr></CometMgr>
     </div>
 </template>
 
 <script>
     import Moon from "./Moon";
     import Sun from "./Sun";
-    import StarMgr from "./StarMgr";
+    import CometMgr from "./CometMgr";
     export default {
         name: "Background.vue",
         data(){
@@ -49,7 +49,7 @@
         components:{
             Moon,
             Sun,
-            StarMgr
+            CometMgr
         }
     }
 </script>

@@ -1,28 +1,28 @@
 <template>
-    <div class="star_mgr">
+    <div class="comet_mgr">
         <div class="wrap">
-            <Star v-for="(item,index) of starList" :key="'star'+index" :index="index"></Star>
+            <Comet v-for="(item,index) of cometList" :key="'star'+index" :index="index"></Comet>
         </div>
     </div>
 </template>
 
 <script>
-    import Star from "./Star";
+    import Comet from "./Comet";
     export default {
-        name: "StarMgr.vue",
+        name: "CometMgr.vue",
         data(){
           return{
-              starList:new Array(14)
+              cometList:new Array(15)
           }
         },
         components:{
-            Star
+            Comet
         }
     }
 </script>
 
 <style scoped>
-    .star_mgr{
+    .comet_mgr{
         position: fixed;
         width:100%;
         height: 100%;
